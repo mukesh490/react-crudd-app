@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 
 export default function Crud() {
     const [formData, setFormData] = useState([]);
     const [editUser, setEditUser] = useState(null)
     const handleSubmit = (values, resetForm) => {
-        console.log(values)
         const data = {
             name: values.name,
             email: values.email,
@@ -19,7 +18,7 @@ export default function Crud() {
         } else {
 
             setFormData((prev) => {
-                console.log(prev, "sefunctio")
+
                 return prev.map((user) => {
                     if (user.id === editUser.id) {
                         return { ...user, ...values };
@@ -36,13 +35,7 @@ export default function Crud() {
     }
 
 
-    useEffect(() => {
-        console.log("Updated Form Data:", formData);
-    }, [formData]);
-
-
     const editDetail = (user) => {
-        console.log(user, "click edit button")
         setEditUser(user);
     }
 
